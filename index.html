@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Embeleze | Espaço de Beleza em Goiânia</title>
+    <!-- Ícones e Fontes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #d4af37; /* Dourado elegante */
+            --primary-dark: #b89228;
+            --bg-light: #faf9f6;
+            --text-color: #333333;
+            --accent-color: #6a8d73; /* Verde suave complementar */
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* HEADER & NAV */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #25D366;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb954;
+            transform: translateY(-2px);
+        }
+
+        /* SOBRE & DIFERENCIAIS */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .badge-item {
+            background-color: var(--white);
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .badge-item i {
+            color: var(--primary-color);
+        }
+
+        /* SERVIÇOS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* DEPOIMENTOS */
+        .rating-summary {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .stars {
+            color: #f1c40f;
+            font-size: 1.3rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .review-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: right;
+            color: #666;
+        }
+
+        /* CONTATO E LOCALIZAÇÃO */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-box {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item i {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-top: 3px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: 0;
+            border-radius: 12px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVEGAÇÃO -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Office <span>Embeleze</span></a>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#avaliacoes">Avaliações</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Sua Experiência Completa de Beleza</h1>
+        <p>Um espaço acolhedor, elegante e moderno pensado especialmente para você cuidar da sua autoestima.</p>
+        <a href="https://wa.me/5562994479844?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Agende pelo WhatsApp
+        </a>
+    </section>
+
+    <!-- SOBRE O ESPAÇO -->
+    <section id="sobre" class="section">
+        <h2 class="section-title">Bem-vinda ao Office Embeleze</h2>
+        <div class="badges">
+            <div class="badge-item">
+                <i class="fas fa-heart"></i> Empresa de Empreendedoras
+            </div>
+            <div class="badge-item">
+                <i class="fas fa-rainbow"></i> Espaço Acolhedor LGBTQ+
+            </div>
+            <div class="badge-item">
+                <i class="fas fa-star"></i> Nota 5.0 no Google
+            </div>
+        </div>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #555;">
+            Localizado no Parque Amazônia, nosso salão combina um ambiente aconchegante e organizado com profissionais excepcionais para oferecer serviços de maquiagem, cuidados com as unhas, cílios e muito mais.
+        </p>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" class="section" style="background-color: #f2f0eb;">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Maquiagem (Make)</h3>
+                <p>Produções impecáveis para festas, eventos ou ensaios fotográficos.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-hand-sparkles"></i>
+                <h3>Design de Unhas</h3>
+                <p>Manicure, pedicure, cutilagem e técnicas modernas de alongamento.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-eye"></i>
+                <h3>Sobrancelhas & Cílios</h3>
+                <p>Realce o seu olhar com design personalizado e procedimentos de qualidade.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-spa"></i>
+                <h3>Cuidados Especiais</h3>
+                <p>Ambiente aconchegante estruturado para o seu momento de relaxamento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AVALIAÇÕES DO GOOGLE -->
+    <section id="avaliacoes" class="section">
+        <h2 class="section-title">O Que Dizem Nossos Clientes</h2>
+        <div class="rating-summary">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p><strong>5,0 de 5.0</strong> em avaliações no Google</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p>"Ambiente lindo, organizado e aconchegante. Profissionais atenciosos e muito competentes. Recomendo demais!"</p>
+                <div class="review-author">- Danubia Braga</div>
+            </div>
+            <div class="review-card">
+                <p>"Uma experiência completa! Atendimento maravilhoso, serviço de qualidade e tudo lindooo! Obrigada meninas!"</p>
+                <div class="review-author">- Hariadny Almeida</div>
+            </div>
+            <div class="review-card">
+                <p>"Se você ainda não conhece o Office Embeleze, precisa conhecer! Um espaço completo para cuidar da beleza: make, unhas e muito mais."</p>
+                <div class="review-author">- Renata Patielle</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO E LOCALIZAÇÃO -->
+    <section id="contato" class="section" style="background-color: #f2f0eb;">
+        <h2 class="section-title">Onde Estamos</h2>
+        <div class="contact-container">
+            <div class="info-box">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Endereço:</strong><br>
+                        Av. D. Terezinha de Morais - Parque Amazônia<br>
+                        Goiânia - GO, 74810-100
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Horário de Funcionamento:</strong><br>
+                        Segunda a Sábado: 07:30 às 18:00
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Telefone / WhatsApp:</strong><br>
+                        (62) 99447-9844
+                    </div>
+                </div>
+                <a href="https://wa.me/5562994479844" target="_blank" class="btn-whatsapp" style="width: 100%; justify-content: center; margin-top: 1rem;">
+                    <i class="fab fa-whatsapp"></i> Entrar em Contato
+                </a>
+            </div>
+            <div>
+                <!-- Mapa do Google Maps -->
+                <iframe 
+                    class="map-frame"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.127!2d-49.2845829!3d-16.7318792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTYpNDEnNTQuOCJTIDQ5wrAxNyc0NC41Ilc!5e0!3m2!1wpt-BR!2sbr!4v1600000000000" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Office Embeleze - Todos os direitos reservados.</p>
+        <p style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Goiânia - GO</p>
+    </footer>
+
+</body>
+</html>
